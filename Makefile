@@ -25,7 +25,8 @@ makefiles = \
   misc/upstart/local.mk \
   misc/systemv/local.mk \
   doc/manual/local.mk \
-  tests/local.mk
+  tests/local.mk \
+  debian/local.mk
 
 GLOBAL_CXXFLAGS += -std=c++14 -g -Wall -include config.h
 
