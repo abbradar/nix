@@ -26,6 +26,7 @@ nix_noinst_scripts := \
 noinst-scripts += $(nix_noinst_scripts)
 
 profiledir = $(sysconfdir)/profile.d
+nixconfdir = $(sysconfdir)/nix
 
 $(eval $(call install-file-as, $(d)/nix-profile.sh, $(profiledir)/nix.sh, 0644))
 $(eval $(call install-program-in, $(d)/find-runtime-roots.pl, $(libexecdir)/nix))
@@ -33,5 +34,6 @@ $(eval $(call install-program-in, $(d)/build-remote.pl, $(libexecdir)/nix))
 $(eval $(call install-program-in, $(d)/resolve-system-dependencies.pl, $(libexecdir)/nix))
 $(foreach prog, $(nix_substituters), $(eval $(call install-program-in, $(prog), $(libexecdir)/nix/substituters)))
 $(eval $(call install-symlink, nix-build, $(bindir)/nix-shell))
+$(eval $(call install-file-as, $(d)/nix.conf, $(nixconfdir)/nix.conf, 0644))
 
 clean-files += $(nix_bin_scripts) $(nix_noinst_scripts)
