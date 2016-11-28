@@ -279,6 +279,13 @@ AC_ARG_ENABLE(init-state, AC_HELP_STRING([--disable-init-state],
 #AM_CONDITIONAL(INIT_STATE, test "$init_state" = "yes")
 
 
+# host init system to install nix-daemon scripts
+AC_ARG_WITH(init-system, AC_HELP_STRING([--with-init-system=NAME],
+  [host init system (launchd, systemd, upstart, systemv, none, defaults to none)]),
+  initsystem=$withval, test "$(uname)" = "Darwin" && initsystem='launchd' || initsystem='none')
+AC_SUBST(initsystem)
+
+
 # Setuid installations.
 AC_CHECK_FUNCS([setresuid setreuid lchown])
 

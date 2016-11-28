@@ -33,3 +33,4 @@ storedir = @storedir@
 sysconfdir = @sysconfdir@
 xmllint = @xmllint@
 xsltproc = @xsltproc@
+initsystem = @initsystem@
