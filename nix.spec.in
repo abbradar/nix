@@ -21,14 +21,17 @@ Requires: /usr/bin/perl
 Requires: curl
 Requires: perl-DBD-SQLite
 Requires: bzip2
-Requires: gzip
+Requires: sqlite
+Requires: libcurl
 Requires: xz
+Requires: openssl
+BuildRequires: make
+BuildRequires: gcc-c++
 BuildRequires: bzip2-devel
 BuildRequires: sqlite-devel
 BuildRequires: libcurl-devel
-
-# Hack to make that shitty RPM scanning hack shut up.
-Provides: perl(Nix::SSH)
+BuildRequires: xz-devel
+BuildRequires: openssl-devel
 
 %description
 Nix is a purely functional package manager. It allows multiple
