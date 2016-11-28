@@ -14,3 +14,10 @@ $(foreach i, config.h $(call rwildcard, src/lib*, *.hh) src/nix-store/serve-prot
   $(eval $(call install-file-in, $(i), $(includedir)/nix, 0644)))
 
 $(foreach i, $(call rwildcard, src/boost, *.hpp), $(eval $(call install-file-in, $(i), $(includedir)/nix/$(patsubst src/%/,%,$(dir $(i))), 0644)))
+
+
+# make the store
+$(eval $(call install-dir, $(storedir), 1775))
+$(eval $(call install-dir, $(localstatedir)/nix/profiles/per-user, 1777))
+$(eval $(call install-dir, $(localstatedir)/nix/gcroots/per-user, 1777))
+$(eval $(call install-dir, $(localstatedir)/nix/channel-cache))
