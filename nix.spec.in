@@ -98,6 +98,10 @@ the emacs-%{name} package to edit Nix expressions with GNU Emacs.
   configure
 
 
+# FIXME: workaround configure errors on Fedora 24 because of invalid flags
+# (autoconf bug?).
+%undefine _hardened_build
+
 %build
 extraFlags=
 # - override docdir so large documentation files are owned by the
