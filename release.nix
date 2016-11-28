@@ -308,14 +308,15 @@ let
     releaseTools.rpmBuild rec {
       name = "nix-rpm";
       src = jobs.tarball;
+
       diskImage = (diskImageFun vmTools.diskImageFuns)
         { extraPackages =
-            [ "sqlite" "sqlite-devel" "bzip2-devel" "libcurl-devel" "openssl-devel" "xz-devel" "libseccomp-devel" ]
+            [ "sqlite" "sqlite-devel" "bzip2-devel" "libcurl-devel" "openssl" "openssl-devel" "xz-devel" "libseccomp-devel" ]
             ++ extraPackages; };
       memSize = 1024;
       meta.schedulingPriority = 50;
+
       postRPMInstall = "cd /tmp/rpmout/BUILD/nix-* && make installcheck";
-      #enableParallelBuilding = true;
     };
 
 
