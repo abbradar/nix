@@ -24,7 +24,8 @@ makefiles = \
   misc/systemv/local.mk \
   misc/emacs/local.mk \
   doc/manual/local.mk \
-  tests/local.mk
+  tests/local.mk \
+  debian/local.mk
 
 GLOBAL_CXXFLAGS += -std=c++0x -g -Wall
 
