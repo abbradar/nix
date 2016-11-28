@@ -65,6 +65,13 @@ if [ -n "$HOME" ] && [ -n "$USER" ]; then
         fi
     done
 
+
+    # Try to route users through Nix daemon.
+    if [ "$USER" != "root" ] && [ -e "@localstatedir@/nix/daemon-socket/socket" ]; then
+        export NIX_REMOTE=daemon
+    fi
+
+
     # Set $NIX_SSL_CERT_FILE so that Nixpkgs applications like curl work.
     if [ -e /etc/ssl/certs/ca-certificates.crt ]; then # NixOS, Ubuntu, Debian, Gentoo, Arch
         export NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
