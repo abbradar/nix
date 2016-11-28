@@ -1,12 +1,28 @@
 # Add a rule for creating $(1) as a directory.  This template may be
-# called multiple times for the same directory.
+# called multiple times for the same directory. Optionally access mode
+# bits provided in $(2) are applied.
 define create-dir
    _i := $$(call add-trailing-slash, $(DESTDIR)$$(strip $(1)))
   ifndef $$(_i)_SEEN
     $$(_i)_SEEN = 1
-    $$(_i):
+    ifeq ($(2),)
+      $$(_i):
 	$$(trace-mkdir) install -d "$$@"
+    else
+      $$(_i):
+	$$(trace-mkdir) install -d "$$@"
+	$$(trace-chmod) chmod $(2) "$$@"
+    endif
   endif
+endef
+
+
+# Add a rule for installing a directory into the system. Accepts the
+# same arguments as create-dir.
+define install-dir
+  $$(eval $$(call create-dir, $(1), $(2)))
+
+  install: $$(_i)
 endef
 
 
