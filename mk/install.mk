@@ -17,6 +17,13 @@ define create-dir
 endef
 
 
+# Add a rule for copying $(1) to $(2).
+define copy-file
+  $(2): $(1)
+	$$(trace-cp) cp "$$<" "$$@"
+endef
+
+
 # Add a rule for installing a directory into the system. Accepts the
 # same arguments as create-dir.
 define install-dir

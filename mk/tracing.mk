@@ -12,6 +12,7 @@ ifeq ($(V), 0)
   trace-jar     = @echo "  JAR   " $@;
   trace-mkdir   = @echo "  MKDIR " $@;
   trace-chmod   = @echo "  CHMOD " $@;
+  trace-cp      = @echo "  CP    " $@;
 
   suppress  = @
 
