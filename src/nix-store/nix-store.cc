@@ -1036,6 +1036,12 @@ static void opVersion(Strings opFlags, Strings opArgs)
 }
 
 
+static void opPrintStoreDir(Strings opFlags, Strings opArgs)
+{
+    cout << settings.nixStore << std::endl;
+}
+
+
 /* Scan the arguments; find the operation, set global flags, put all
    other flags in a list, and put all other arguments in another
    list. */
@@ -1054,6 +1060,8 @@ int main(int argc, char * * argv)
                 showManPage("nix-store");
             else if (*arg == "--version")
                 op = opVersion;
+            else if (*arg == "--print-store-dir")
+                op = opPrintStoreDir;
             else if (*arg == "--realise" || *arg == "--realize" || *arg == "-r")
                 op = opRealise;
             else if (*arg == "--add" || *arg == "-A")
