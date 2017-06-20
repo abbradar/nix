@@ -40,7 +40,6 @@ let
         '';
 
         preConfigure = ''
-          (cd perl ; autoreconf --install --force --verbose)
           # TeX needs a writable font cache.
           export VARTEXFONTS=$TMPDIR/texfonts
 
