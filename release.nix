@@ -179,6 +179,10 @@ let
       };
 
 
+    rpm_centos65i386 = makeRPM_i686 (diskImageFuns: diskImageFuns.centos65i686) [];
+    rpm_centos65x86_64 = makeRPM_x86_64 (diskImageFunsFun: diskImageFunsFun.centos65x86_64) [];
+    rpm_centos71x86_64 = makeRPM_x86_64 (diskImageFunsFun: diskImageFunsFun.centos71x86_64) [];
+
     rpm_fedora19i386 = makeRPM_i686 (diskImageFuns: diskImageFuns.fedora19i386) [];
     rpm_fedora19x86_64 = makeRPM_x86_64 (diskImageFunsFun: diskImageFunsFun.fedora19x86_64) [];
     rpm_fedora20i386 = makeRPM_i686 (diskImageFuns: diskImageFuns.fedora20i386) [];
@@ -328,7 +332,7 @@ let
       diskImage = (diskImageFun vmTools.diskImageFuns)
         { extraPackages =
             [ "build-essential" "debhelper"
-              "libdbd-sqlite3-perl" "libsqlite3-dev" "libbz2-dev" "libwww-curl-perl" "libcurl-dev" "libcurl4-openssl-dev" "libssl-dev" "liblzma-dev" ]
+              "libdbd-sqlite3-perl" "libsqlite3-dev" "libbz2-dev" "libwww-curl-perl" "libcurl-dev" "libcurl4-openssl-dev" "libssl-dev" "liblzma-dev"
             ] ++ extraPackages; };
       memSize = 1024;
       meta.schedulingPriority = 50;
